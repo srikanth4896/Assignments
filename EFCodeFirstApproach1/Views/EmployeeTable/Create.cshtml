@@ -1,0 +1,45 @@
+﻿@model EFCodeFirstApproach1.Models.EmployeeTable
+@{ ViewBag.Title = "Create";
+                Layout = "~/Views/Shared/_Layout.cshtml"; 
+ }
+
+<h2>Create</h2>
+
+<form  action="/EmployeeTable/Create" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+
+            @Html.LabelFor(m => m.EName)
+            
+                  @Html.TextBoxFor(m => m.EName, new { @class = "form-control", placeholder = "Employeename" })
+                  @Html.ValidationMessageFor(m => m.EName, "Employee is Mandatory")
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(m => m.ESalary)
+
+            @Html.TextBoxFor(m => m.ESalary, new { @class = "form-control", placeholder = "Salary(eg:1322.34).." })
+        </div>
+        <div class="form-group col-md-6">
+            <label for="DeptId">Department Id</label>
+            <select class="form-control" id="deptid" name="DeptId">
+                <option value="">please select DeptId</option>
+                @foreach (var d in ViewBag.Depts)
+                {
+    <option value="@d.DeptId">@d.DeptId</option>}
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="MId">Manager Id</label>
+            <select class="form-control" id="Mid" name="MId">
+                <option value="">please select Manager Id</option>
+                @foreach (var d in ViewBag.Mang)
+                {
+    <option value="@d.MId">@d.MId</option>}
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Employee</button>
+    @Html.ActionLink("Cancle", "Index", "EmployeeTable", new { @class = "btn btn-dark" });
+</form>
+

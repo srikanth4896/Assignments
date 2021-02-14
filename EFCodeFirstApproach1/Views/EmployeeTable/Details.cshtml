@@ -1,0 +1,31 @@
+﻿@model EFCodeFirstApproach1.Models.EmployeeTable
+@{ ViewBag.Title = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Employee Id</th>
+        <th>@Model.Id</th>
+    </tr>
+    <tr>
+        <th>Employee Name</th>
+        <th>@Model.EName</th>
+    </tr>
+    <tr>
+        <th>Employee Salary</th>
+        <th>@Model.ESalary</th>
+    </tr>
+    <tr>
+        <th>Department name</th>
+        <th>@Model.DepartmentTable.DeptName</th>
+    </tr>
+    <tr>
+        <th> Manager Name</th>
+        <th>@Model.ManagerTable.MName</th>
+    </tr>
+</table>
+
+<a href="/EmployeeTable/Index" class="btn btn-info">Back</a>
+

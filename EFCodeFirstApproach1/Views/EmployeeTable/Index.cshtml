@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EFCodeFirstApproach1.Models.EmployeeTable> 
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br/>
+<form class="form-inline" action="/EmployeeTable/index">
+    @Html.Label("search", "Search")
+    <input type="text" class="form-control" id="search" name="search" placeholder="search" value="@ViewBag.Search" />
+    <button type="submit" class="btn btn-primary">Go</button>
+    <a href="/EmployeeTable/create"  class="btn btn-primary">Add Employee</a>
+</form>
+<br />
+<h4>Total Employee Data</h4>
+<br />
+<form class=" form-inline" action="/home/index">
+    <table class="table">
+        <tr>
+            <th>@Html.Label("empid", "Employee Id")</th>
+            <th>@Html.Label("empname", "Employee Name")</th>
+            <th>@Html.Label("salary", "Salary")</th>
+            <th>@Html.Label("Dname", "DeptNo")</th>
+            <th>@Html.Label("Manager", "ManagerNo")</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>@Html.DisplayFor(e => item.Id)</td>
+    <td>@Html.DisplayFor(e => item.EName)</td>
+    <td>@Html.DisplayFor(e => item.ESalary)</td>
+    <td>@Html.DisplayFor(e => item.DepartmentTable.DeptId)</td>
+    <td>@Html.DisplayFor(e => item.ManagerTable.MId)</td>
+    <td><a href="/EmployeeTable/Details/@item.Id">Details</a></td>
+   
+    <td><a href="/EmployeeTable/Update/@item.Id" class="btn btn-primary">Update</a></td>
+    
+    <td><a href="/EmployeeTable/Delete/@item.Id" class="btn btn-danger">Delete</a></td>
+</tr>}
+    </table>
+</form>
